@@ -67,7 +67,7 @@ def upload_file():
 			output_class,confidence = test_image("./images/"+filename)
 			out = diseasewithid[output_class]
 			app.logger.info("Contructing the API response")
-			outputformat = {"success": True,"message": "result found successfully","data": {"_id":out,"opinion":"IDK","efficiency":str(confidence*100)}}
+			outputformat = {"success": True,"message": "result found successfully","data": {"_id":out,"opinion":output_class,"efficiency":str(confidence*100)}}
 		return jsonify(outputformat)#  out #labels[np.argmax(out)]
 
 @app.route('/clear',methods=['POST'])
