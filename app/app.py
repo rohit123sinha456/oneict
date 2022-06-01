@@ -3,6 +3,7 @@ import cv2
 import tensorflow_hub as hub
 import numpy as np
 from flask import Flask,request,jsonify,current_app
+from flask_cors import CORS
 import os
 from werkzeug.utils import secure_filename
 from security import api_required
@@ -11,6 +12,7 @@ import shutil
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 #from models import predict
 app = Flask(__name__)
+CORS(app)
 UF = "./images"
 
 if os.path.isdir(UF):
