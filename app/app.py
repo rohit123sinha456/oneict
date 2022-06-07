@@ -70,6 +70,9 @@ def upload_file():
 			out = diseasewithid[output_class]
 			app.logger.info("Contructing the API response")
 			outputformat = {"success": True,"message": "result found successfully","data": {"_id":out,"opinion":output_class,"efficiency":str(confidence*100)}}
+		else:
+			outputformat = {"Error": "File Format Not Supported. PNG, JPEG, JPG Format Only"}
+
 		send_response = jsonify(outputformat)
 		send_response.headers.add('Access-Control-Allow-Origin', '*')
 		return send_response#  out #labels[np.argmax(out)]
